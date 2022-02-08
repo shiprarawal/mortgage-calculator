@@ -1,0 +1,56 @@
+.panel {
+  margin-bottom: 23px;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  width: 50%;
+  height: auto;
+
+  &:first-child {
+    margin-right: 20px;
+  }
+&-primary {
+    border-color: #2572b4;
+  }
+  &-title {
+    margin: 0;
+  }
+  &-heading {
+    color: #fff;
+    background-color: #2572b4;
+    border-color: #2572b4;
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+}
+
+.mortgage-calculator {
+  &__container {
+    display: flex;
+  }
+  &__wrapper {
+    padding: 0 100px;
+  }
+  &__input {
+    display: flex;
+    flex-direction: column;
+  }
+  &__summary {
+    width: 100%;
+    &--heading {
+      text-align: center;
+    }
+  }
+  &__amortization-period {
+    display: flex;
+    justify-content: space-between;
+    mat-form-field {
+      flex: 1;
+      &:first-child {
+        padding-right: 20px;
+      }
+    }
+  }
+}

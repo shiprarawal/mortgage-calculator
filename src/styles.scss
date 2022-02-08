@@ -1,1 +1,34 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$mortgage-calculator-primary: mat-palette($mat-indigo);
+$mortgage-calculator-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$mortgage-calculator-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$mortgage-calculator-theme: mat-light-theme($mortgage-calculator-primary, $mortgage-calculator-accent, $mortgage-calculator-warn);
+
+@include angular-material-theme($mortgage-calculator-theme);
+
 /* You can add global styles to this file, and also import other style files */
+body,
+html {
+  margin: 0;
+  width: 100vw;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 16px;
+}
+ h1 {
+   font-size: 30px;
+   line-height: 40px;
+ }
+
+

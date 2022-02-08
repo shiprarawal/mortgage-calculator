@@ -1,0 +1,100 @@
+<main class = "mortgage-calculator__wrapper">
+  <h2>Mortgage Calculator</h2>
+  <p>This calculator determines your mortgage payment and provides you with a mortgage payment schedule.
+    The calculator also shows how much money and how many years you can save by making prepayments.</p>
+  <section class ="mortgage-calculator__container">
+    <!-- section to display payment plan-->
+    <section class="panel panel-primary">
+      <header class="panel-heading">
+        <h3 class="panel-title">Payment plan</h3>
+      </header>
+      <mat-form-field appearance="fill" floatLabel="always" class="mortgage-calculator__input">
+        <mat-label>Mortgage Amount</mat-label>
+        <span matPrefix>$&nbsp;</span>
+        <input matInput type="number" placeholder="0" [(ngModel)]="mortgageEntity.mortgageAmount">
+      </mat-form-field>
+      <mat-form-field appearance="fill" floatLabel="always" class="mortgage-calculator__input">
+        <mat-label>Interest Rate</mat-label>
+        <input matInput type="number" placeholder="0" [(ngModel)]="mortgageEntity.interestRate">
+        <span matSuffix>%</span>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="mortgage-calculator__input">
+        <mat-label>Amortization Period</mat-label>
+        <mat-select [(value)]="mortgageEntity.amortizationPeriodYear">
+          <mat-option *ngFor="let option of amortizationYears" [value]="option.value">
+            {{option.label}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="mortgage-calculator__input">
+        <mat-label>Payment Frequency</mat-label>
+        <mat-select [(value)]="mortgageEntity.paymentFrequency">
+          <mat-option *ngFor="let option of paymentFrequency" [value]="option.value">
+            {{option.label}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="mortgage-calculator__input">
+        <mat-label>Term</mat-label>
+        <mat-select [(value)]="mortgageEntity.term">
+          <mat-option *ngFor="let option of terms" [value]="option.value">
+            {{option.label}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </section>
+    <!-- section to display payment plan-->
+
+    <!-- section to display pre payment plan-->
+    <section class="panel panel-primary">
+      <header class="panel-heading">
+        <h3 class="panel-title">Prepayment plan</h3>
+      </header>
+      <mat-form-field appearance="fill" floatLabel="always" class="mortgage-calculator__input">
+        <mat-label>Prepayment Amount</mat-label>
+        <span matPrefix>$&nbsp;</span>
+        <input matInput type="number" placeholder="0" [(ngModel)]="mortgageEntity.prepaymentAmount">
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="mortgage-calculator__input">
+        <mat-label>Prepayment frequency</mat-label>
+        <mat-select [(value)]="mortgageEntity.prePaymentFrequency">
+          <mat-option *ngFor="let option of prePaymentFrequency" [value]="option.value" >
+            {{option.label}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="mortgage-calculator__input">
+        <mat-label>Start with payment</mat-label>
+        <input matInput type="number" placeholder="0" [(ngModel)]="mortgageEntity.startWithPayment">
+      </mat-form-field>
+    </section>
+  </section>
+  <!-- end of section to display pre payment plan-->
+  <button mat-raised-button (click)="calculateMortgage()"> Calculate </button>
+  <!-- Section to display Calculation Summary-->
+  <h4 class="mortgage-calculator__summary--heading">Calculation Summary</h4>
+  <table mat-table [dataSource]="dataSource" class="mortgage-calculator__summary">
+    <!-- Category Column -->
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef width="50%"> Category </th>
+      <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+    </ng-container>
+
+    <!-- Term Column -->
+    <ng-container matColumnDef="term" width="25%">
+      <th mat-header-cell *matHeaderCellDef> Term </th>
+      <td mat-cell *matCellDef="let element"> {{element.term}} </td>
+    </ng-container>
+
+    <!-- Amortization Period Column -->
+    <ng-container matColumnDef="amortizationPeriod" width="25%">
+      <th mat-header-cell *matHeaderCellDef> Amortization Period </th>
+      <td mat-cell *matCellDef="let element"> {{element.amortizationPeriod}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</main>
+
+
